@@ -87,6 +87,7 @@ def db_findone(arg1_collection, arg2_findone_dict):
         return "findone_error"
 
 def db_findmany(arg1_collection, arg2_findmany_dict):
+    found_many_list = []
     try:
         found_many = db_core_collection(mongodb_dbname, arg1_collection).find(arg2_findmany_dict)
         for x in found_many:
