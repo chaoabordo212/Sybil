@@ -97,6 +97,16 @@ def db_findmany(arg1_collection, arg2_findmany_dict):
         print(error)
         return "findmany_error"
 
+def db_findlast(arg1_collection):
+    try:
+        found_last = db_core_collection(mongodb_dbname, arg1_collection).find().sort('qnum', -1).limit(1)
+        for x in found_last:
+            return x
+
+    except Exception as error:
+        print(error)
+        return "findlast_error"
+
 def db_updateone(arg1_collection, arg2_findone_dict, arg3_updateone_dict):
     try:
         updated_one = db_core_collection(mongodb_dbname, arg1_collection).update_one(arg2_findone_dict, arg3_updateone_dict)
