@@ -7,13 +7,17 @@ from .dbagent import *
 from .config_db import *
 
 
-def query_lastqnum(arg1_queries_collection):
+def query_lastqnum(dict1_collection_sortfield):
+    arg1_collection, arg2_sortfield = dict1_collection_sortfield['collection'], dict1_collection_sortfield['sortfield']
     try:
-        lastqnum = db_findlast(arg1_queries_collection)['qnum']
+        lastqnum = db_findlast(arg1_collection, arg2_sortfield)['Num']
         return lastqnum
     except Exception as err:
-        traceback.print_exception(type(err), err, err.__traceback__)
+        ioagent_trace = traceback.print_exception(type(err), err, err.__traceback__)
+        return ioagent_trace
         return "lastqnum_error"
+
+# def query_input(arg1_query)
 
 # def insert_searchstring(arg1_queries_collection, arg2_search_string):
 #   search_dict = { "search_string" : arg2_search_string, "qnum" : qnum }

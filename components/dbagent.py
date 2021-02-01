@@ -97,9 +97,9 @@ def db_findmany(arg1_collection, arg2_findmany_dict):
         print(error)
         return "findmany_error"
 
-def db_findlast(arg1_collection):
+def db_findlast(arg1_collection, arg2_sortfield):
     try:
-        found_last = db_core_collection(mongodb_dbname, arg1_collection).find().sort('qnum', -1).limit(1)
+        found_last = db_core_collection(mongodb_dbname, arg1_collection).find().sort(arg2_sortfield, -1).limit(1)
         for x in found_last:
             return x
 
