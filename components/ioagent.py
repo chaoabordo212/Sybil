@@ -13,8 +13,7 @@ def query_lastnum(arg1_collection_sortfield_showfield_dict):
         return lastnum
     except Exception as err:
         ioagent_trace = traceback.print_exception(type(err), err, err.__traceback__)
-        return ioagent_trace
-        return "lastnum_error"
+        return [ "lastnum_error", ioagent_trace ]
 
 def query_list(arg1_collection_findmany_dict):
     var1_collection, var2_findmany_dict = arg1_collection_findmany_dict['collection'], arg1_collection_findmany_dict['findmany']
@@ -23,8 +22,7 @@ def query_list(arg1_collection_findmany_dict):
         return query_found_list
     except Exception as err:
         ioagent_trace = traceback.print_exception(type(err), err, err.__traceback__)
-        return ioagent_trace
-        return "list_error"
+        return [ "list_error", ioagent_trace ]
 
 #def query_find():
 #
