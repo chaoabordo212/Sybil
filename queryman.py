@@ -28,12 +28,24 @@ def queryman_list_queries(arg1_collection_findmany_dict):
         print(f' {num_queries} documents found ')
         print("DEBUG", "var result_list is of type ",type(result_list))
         for result in result_list:
-            posnum =+ 1
-            print( result_list[posnum]['Timestamp'], result_list[posnum]['URL'], result_list[posnum]['Title'] )
-            print('')
+            result_id = result.get('_id')
+            result_url = result.get('URL')
+            result_title = result.get('Title')
+            result_timestamp = result.get('Timestamp')
+            result_instance = { "_id": result_id, "URL": result_url, "Title": result_title, "Timestamp": result_timestamp }
+            print(result_instance)
+            # posnum =+ 1
+            # print( result_list[posnum]['Timestamp'], result_list[posnum]['URL'], result_list[posnum]['Title'] )
+            # print('')
     except Exception as err:
         list_trace = traceback.print_exception(type(err), err, err.__traceback__)
         return ("list_queries_error", list_trace)
+
+# def queryman_list_google_queries(arg1_google_doc):
+    
+
+# def queryman_add_
+
 
 # def query_management_list(arg1_list_dict):
 #   var1_collection, var2_findmany_dict = arg1_list_dict['']
