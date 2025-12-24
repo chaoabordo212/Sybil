@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "git": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "c:/Users/Dan/Documents/GitHub"
+      ]
+    },
+    "tavily": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "tavily-mcp@0.2.3"
+      ],
+      "env": {
+        "TAVILY_API_KEY": "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"
+      }
+    },
+    "gdrive": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-gdrive"
+      ],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "AIzaSyBv-M4LctBa5kimzIx3WyuCCLzQmob7fkA"
+      }
+    },
+    "qdrant": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-qdrant"
+      ],
+      "env": {
+        "QDRANT_URL": "https://c4ec56eb-55be-4fe9-a41c-6d1b8222dc4f.europe-west3-0.gcp.cloud.qdrant.io",
+        "QDRANT_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.U3Id4u39cazPsQgrsZ4asx7Lf1r8pMel6DriGp6RNVU",
+        "COLLECTION_NAME": "auto-generated-api-key",
+        "EMBEDDING_MODEL": ""
+      }
+    }
+  }
+}
