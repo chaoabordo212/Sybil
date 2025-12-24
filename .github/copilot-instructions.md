@@ -56,3 +56,33 @@ Next step for humans
 - Please review these instructions and tell me if you'd like me to merge duplicate modules, add a README.md, or scaffold tests and a `tests/` directory.
 
 -- End of file
+
+Detected dependencies (from `requirements.txt` and imports)
+- Declared in `requirements.txt`: `certifi`, `google`, `pymongo`, `Unidecode`, `simplejson` (many entries are commented out).
+- Files import these libraries: `pymongo`, `googlesearch` (`from googlesearch import search`), `unidecode`, `langdetect`, `certifi`, and standard libs `urllib`, `re`, `ssl`, `time`.
+
+Import & function map (quick reference)
+- `queryman.py` imports: `components.config_db`, `components.dbagent` (uses `db_status`, `query_list`), `components.ioagent`.
+- `components/dbagent - Copy.py`: provides `db_core`, `db_status`, `db_core_collection`, CRUD helpers (`db_insertone`, `db_findmany`, `db_findone`, `db_updateone`, etc.).
+- `components/Copy (1) ioagent - Copy.py`: provides `query_lastnum`, `query_list` and wraps `dbagent` helpers.
+- `components/googleagent - Copy.py`: provides `google_search(search_query)` which uses `googlesearch.search` and sanitizes queries.
+- `components/Copy (1) langagent - Copy.py`: provides `langdet(text)` using `langdetect.detect`.
+
+Duplicate / copy-file pattern
+- The `components/` folder contains several files with `Copy` or `Copy (1)` in their names. Examples:
+  - `components/Copy (1) config_db.py`
+  - `components/Copy (1) ioagent - Copy.py`
+  - `components/Copy (1) langagent - Copy.py`
+  - `components/dbagent - Copy.py`
+  - `components/googleagent - Copy.py`
+- Treat these as intentionally retained artifacts. Do NOT rename or delete them without the repo owner's explicit approval. If you consolidate, update imports in `queryman.py` and other modules.
+
+Security & secrets note
+- `components/Copy (1) config_db.py` contains a hard-coded MongoDB password and host values. Treat this as a secret leak: do not commit real credentials, and rotate/remove them immediately. When running locally, prefer using environment variables or a secure vault.
+
+Suggested quick tasks for maintainers
+- Add a small `README.md` describing how `queryman.py` composes `components/` and which files are canonical versus duplicates.
+- Add `tests/` with unit tests for `dbagent` (mock `pymongo`) and `ioagent` wrappers.
+- Replace the hard-coded credentials with environment-variable loading and document the vars in `README.md`.
+
+-- End of file
