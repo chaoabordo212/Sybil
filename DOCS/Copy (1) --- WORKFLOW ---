@@ -1,0 +1,5 @@
+ --- WORKFLOW ---
+
+
+{search_string} -> queryman -> dbagent -> mongoDB
+{search_string} <- mongoDB <- dbagent <- queryman <- googleagent <- {search_results}
